@@ -50,7 +50,7 @@ class Eye {
     static const int IRIS_RADIUS = 60;
     
     int desiredPupilRadius;
-    static constexpr float MAX_PUPIL_RADIUS = 0.4;//Proportional to the screen height
+    static constexpr float MAX_PUPIL_RADIUS = 0.4;//Proportional to the screen height //NOTE should be relative to the iris size, not the screen size
     static constexpr float MIN_PUPIL_RADIUS = 0.1;//Proportional to the screen height
     static const uint16_t PUPIL_COLOR = BLACK;
     
