@@ -1,0 +1,4 @@
+Most of the code (practically all of it) was written by AI.
+Controlling the display is done by sending a JSON file with the correct command and values.
+If you want to know the available commands or add your own, check the .ino files in DisplayCode/CommsOverSerial and DisplayCode/CommsOverWIFI respectively.
+Some commands may ont be available to both due to time restrictions in the creation of this repo.
