@@ -24,8 +24,8 @@
 #include <WiFi.h>
 #include <WebSocketsServer.h>
 
-const char* WIFI_SSID = "Your wifi/hotspot here";
-const char* WIFI_PASSWORD = "Password here";
+const char* WIFI_SSID = "iPhone (Simon)";
+const char* WIFI_PASSWORD = "123456789";
 
 WebSocketsServer webSocket(8765);
 
@@ -61,7 +61,7 @@ Eye_Pair Eyes = Eye_Pair(Eye1, Eye2);
 // ======================================
 
 // =====Api commands through wifi======
-// TODO: show the ip addres through the displays for debugging!!
+
 void onWebSocketEvent(
     uint8_t clientNum,
     WStype_t type,
