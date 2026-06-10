@@ -1,0 +1,2 @@
+This directory contains a bunch of images in the bitmap format. They can be used as sprites. 
+This file is useless unless you're copying the images to some other code
