@@ -1,0 +1,137 @@
+(info Created by chatgpt)
+
+Big picture (what this code is)
+
+This program runs on an ESP32 and:
+
+Drives two TFT screens (your “robot eyes”)
+Receives JSON commands over Serial (USB)
+Turns those commands into eye actions (look, blink, mood, etc.)
+
+Think of it like this:
+
+💬 You send a text command → 🧠 ESP32 reads it → 👀 Eyes react
+
+📡 How control works (the important part)
+
+All control happens through this function:
+
+void handleCommand(JsonDocument& doc)
+
+It expects JSON like:
+
+{ "cmd": "look", "value": { "x": 0.5, "y": -0.2 } }
+The key idea:
+"cmd" = what action to do
+"value" = optional extra data for that action
+
+
+
+
+Existing controls:
+1. Look around
+{ "cmd": "look", "value": { "x": 1.0, "y": 0.0 } }
+
+Moves the eyes direction.
+
+2. Set mood
+{ "cmd": "mood", "value": "happy" }
+
+Changes eye expression.
+
+3. Change pupil size
+{ "cmd": "pupilR", "value": { "r": 3.0 } }
+
+Makes pupils bigger or smaller.
+
+4. Blink
+{ "cmd": "blink" }
+
+No extra value needed.
+
+5. Glance (quick eye movement away from current position)
+{ "cmd": "glance", "value": { "x": 0.3, "y": -0.4 } }
+
+Or random glance:
+
+{ "cmd": "glance" }
+
+6. State (idle / active etc.)
+{ "cmd": "state", "value": "idle" }
+
+
+How to ADD a new control (simple step-by-step)
+
+Let’s say you want to add:
+
+a new“waggle eyes” command
+
+STEP 1 — Add a new else if
+
+Inside handleCommand, add:
+
+else if (strcmp(cmd, "waggle") == 0) {
+  Eyes.waggle();  // <- your new function
+}
+STEP 2 — Implement the function in your Eye system
+
+You probably have this in Robot_Eye.h or Robot_Eye_Pair.
+
+Add something like:
+
+void Eye_Pair::waggle() {
+    look(0.5, 0);
+    delay(100);
+    look(-0.5, 0);
+    delay(100);
+    look(0, 0);
+}
+
+(Exact location depends on your class structure.)
+
+STEP 3 — Send the command
+
+Now you can send:
+
+{ "cmd": "waggle" }
+Pattern for ALL new controls
+
+Every new command always follows this pattern:
+
+1. Detect command name
+if (strcmp(cmd, "yourCommand") == 0)
+2. Read optional data
+JsonVariant v = doc["value"];
+3. Call your function
+Eyes.someFunction();
+Example: adding brightness control
+JSON you want:
+{ "cmd": "brightness", "value": 120 }
+Add to handleCommand:
+else if (strcmp(cmd, "brightness") == 0) {
+  int b = doc["value"] | 0;
+  Eyes.setBrightness(b);
+}
+Where the real “eye behavior” lives
+
+This main file is just a controller.
+
+The real behavior is inside:
+
+Robot_Eye.h
+Robot_Eye_Pair.h
+
+So:
+
+This file = command interpreter
+Those files = actual eye movement logic
+
+Summary (super simple)
+
+To add a new control:
+
+Add a new "cmd" case in handleCommand
+Read value if needed
+Call a function on Eyes
+Implement that function in the Eye classes
+Send JSON over Serial
