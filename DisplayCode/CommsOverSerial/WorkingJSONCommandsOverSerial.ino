@@ -35,7 +35,7 @@
 // For 1.44" and 1.8" TFT with ST7735 use:
 Adafruit_ST7735 tft1 = Adafruit_ST7735(TFT1_CS, TFT_DC, TFT_RST);
 Adafruit_ST7735 tft2 = Adafruit_ST7735(TFT2_CS, TFT_DC, -1); // help gotten from https://forums.adafruit.com/viewtopic.php?t=171191
-44444444444444444444444444444444444444444444444444444444444444444444
+
 //Canvas is initialized the same size as the tft1 display, assuming both displays are of the same size this is fine
 GFXcanvas16 canvas(tft1.width(), tft1.height());// offscreen canvas to avoid flickering
 
@@ -50,6 +50,7 @@ Eye_Pair Eyes = Eye_Pair(Eye1, Eye2);
 
 
 void handleCommand(JsonDocument& doc) {
+  
   const char* cmd = doc["cmd"];
 
   if (!cmd) return;
