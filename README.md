@@ -5,22 +5,28 @@ This repository will not be updated regularly. Do what you want with it I don't 
 
 While the code is made for the specific display, it can be changed easily enough to work with other TFT displays if they are supported by the adafruit GFX library.
 
-
+----------
 
 How to control your eyes:
 Controlling the eyes is done by sending JSON files, that contain commands and values for the specific commands.
 These files can be sent either through serial or through a wifi connection depending on which version is 
 running on your (assumably) esp32s3.
 
+
 A correct command is a string, that contains(aka. can be parsed to) a JSON file. The read ends in a newline ("\n") character. 
 (Note that some JSON to string functions might add newlines inside of the string for readability, causing errors)
 
 
+
 example command strings (not correct syntax for Strings, but you get the point hopefully):
 {"cmd":"look", "value":{"x": 0.34, "y": 0.117}}\n
+
 {"cmd":"state", "value":"DEBUG"}\n
+
 {"cmd":"mood", "value":"CONFUSED"}\n
+
 {"cmd":"blink"}\n
+
 {"cmd":"pupilR", "value":{"r":0.69}}\n
 
 Different states and what they do:
