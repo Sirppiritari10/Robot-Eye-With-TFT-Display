@@ -1,0 +1,2 @@
+This directory contains some very jank code that can be used to control a screen (Seeed Studio Round Display for XIAO) as a mouth for the robot. It is not very good, and doesn't look great. 
+Highly suggest just writing your own code.
