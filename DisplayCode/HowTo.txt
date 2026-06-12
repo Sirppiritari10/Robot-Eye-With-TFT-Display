@@ -1,0 +1,8 @@
+Grab the .cpp and .h files from this directory and then choose either comms over wifi or comms over serial as your main .ino file. 
+Put these files in a folder and open with arduino ide, then compile and upload to your microcontroller. 
+The dependencies can be checked from the files, but they (should) be
+Adafruit GFX graphics library
+Adafruit ST7732 (included in Adafruit ST77XX) for the display control (and colors)
+the dependencies of those adafruit libraries you can check yourself :P
+ArduinoJson library
+(I might've missed some so if you encounter issues do check the #includes in each file)
