@@ -5,10 +5,10 @@ import threading
 import websocket
 
 
-TARGET_SERIAL = "48:27:E2:E7:D2:C4"//Check your target serial, use ai or smth to figure out what is right
-BAUD_RATE = 9600 // make sure this matches the baud rate in your arduino code
+TARGET_SERIAL = "48:27:E2:E7:D2:C4"# Check your target serial, use ai or smth to figure out what is right
+BAUD_RATE = 9600 # make sure this matches the baud rate in your arduino code
 
-ESP32_WS_URL = "ws://172.20.10.2:8765"//use ai or smth to figure out what is right, (that's how I did it)
+ESP32_WS_URL = "ws://172.20.10.2:8765"# use ai or smth to figure out what is right, (that's how I did it)
 # -------------------------------
 # CONFIG (EASY TO EXTEND)
 # -------------------------------
